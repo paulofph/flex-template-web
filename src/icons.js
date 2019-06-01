@@ -13,7 +13,8 @@ import {
     faUtensils,
     faChild,
     faUmbrellaBeach,
-    faWifi
+    faWifi,
+    faFireAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -30,5 +31,6 @@ library.add(
     faUtensils,
     faChild,
     faUmbrellaBeach,
-    faWifi
+    faWifi,
+    faFireAlt
 );
