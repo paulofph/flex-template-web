@@ -54,26 +54,19 @@ const TIME_SLOTS = [
  */
 
 export const amenities = [
-  {
-    key: 'towels',
-    label: 'Amenity.towels',
-    icon: "layer-group"
-  },
-  {
-    key: 'bathroom',
-    label: 'Amenity.bathroom',
-    icon: "shower"
-  },
-  {
-    key: 'jacuzzi',
-    label: 'Amenity.jacuzzi',
-    icon: 'hot-tub'
-  },
-  {
-    key: 'barbeque',
-    label: 'Amenity.barbeque',
-    icon: 'gripfire'
-  }
+  { key: 'towels', label: 'Amenity.towels', icon: "layer-group" },
+  { key: 'bathroom', label: 'Amenity.bathroom', icon: "shower" },
+  { key: 'toilet', label: 'Amenity.toilet', icon: "toilet" },
+  { key: 'changeRoom', label: 'Amenity.changeRoom', icon: "tshirt" },
+  { key: 'jacuzzi', label: 'Amenity.jacuzzi', icon: 'hot-tub' },
+  { key: 'spa', label: 'Amenity.spa', icon: 'spa' },
+  { key: 'barbeque', label: 'Amenity.barbeque', icon: 'gripfire' },
+  { key: 'disabledAccess', label: 'Amenity.disabledAccess', icon: 'gripfire' },
+  { key: 'sunLounge', label: 'Amenity.sunLounge', icon: 'chair' },
+  { key: 'dinningRoom', label: 'Amenity.dinningRoom', icon: 'utensils' },
+  { key: 'inflatables', label: 'Amenity.inflatables', icon: 'child' },
+  { key: 'shadows', label: 'Amenity.shadows', icon: 'umbrella-beach' },
+  { key: 'wifi', label: 'Amenity.wifi', icon: 'wifi' },
 ];
 
 export const traderCategories = [
