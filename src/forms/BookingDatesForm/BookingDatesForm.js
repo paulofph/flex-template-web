@@ -205,7 +205,7 @@ export class BookingDatesFormComponent extends Component {
                 />
               </p>
               <div className={submitButtonClasses}>
-                <PrimaryButton type="submit">
+                <PrimaryButton type="submit" disabled>
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
                 </PrimaryButton>
               </div>
