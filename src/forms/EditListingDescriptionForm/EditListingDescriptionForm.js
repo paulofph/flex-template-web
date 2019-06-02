@@ -54,7 +54,7 @@ const EditListingDescriptionFormComponent = props => (
         return c.label = intl.formatMessage({ id: c.label })
       })
   
-      const traderCategoryLabel = intl.formatMessage({ id: 'EditListingDescriptionForm.categoryLabel' });
+      const traderCategoryLabel = intl.formatMessage({ id: 'EditListingDescriptionForm.traderCategoryLabel' });
       const traderCategoryPlaceholder = intl.formatMessage({ id: 'EditListingDescriptionForm.traderCategoryPlaceholder' });
       const traderCategoryRequired = required( intl.formatMessage({ id: 'EditListingDescriptionForm.traderCategoryRequired' }));
       traderCategories.map(c => {

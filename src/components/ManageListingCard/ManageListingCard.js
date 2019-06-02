@@ -38,6 +38,8 @@ import {
 import MenuIcon from './MenuIcon';
 import Overlay from './Overlay';
 import css from './ManageListingCard.css';
+import { types as sdkTypes } from '../../util/sdkLoader';
+const { Money } = sdkTypes;
 
 // Menu content needs the same padding
 const MENU_CONTENT_OFFSET = -12;
@@ -128,7 +130,8 @@ export const ManageListingCardComponent = props => {
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
   const id = currentListing.id.uuid;
-  const { title = '', price, state } = currentListing.attributes;
+  const { title = '', state, publicData } = currentListing.attributes;
+  const priceAfternoonAdult = publicData.priceAfternoonAdult || 0;
   const slug = createSlug(title);
   const isPendingApproval = state === LISTING_STATE_PENDING_APPROVAL;
   const isClosed = state === LISTING_STATE_CLOSED;
@@ -139,7 +142,7 @@ export const ManageListingCardComponent = props => {
   const menuItemClasses = classNames(css.menuItem, {
     [css.menuItemDisabled]: !!actionsInProgressListingId,
   });
-
+  const price = new Money(priceAfternoonAdult, config.currency)
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
   const hasError = hasOpeningError || hasClosingError;
@@ -156,14 +159,8 @@ export const ManageListingCardComponent = props => {
     : LISTING_PAGE_PARAM_TYPE_EDIT;
 
   const unitType = config.bookingUnitType;
-  const isNightly = unitType === LINE_ITEM_NIGHT;
-  const isDaily = unitType === LINE_ITEM_DAY;
 
-  const unitTranslationKey = isNightly
-    ? 'ManageListingCard.perNight'
-    : isDaily
-    ? 'ManageListingCard.perDay'
-    : 'ManageListingCard.perUnit';
+  const unitTranslationKey = 'ManageListingCard.perAfternoon'
 
   return (
     <div className={classes}>

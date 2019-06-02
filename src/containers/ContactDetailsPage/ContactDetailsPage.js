@@ -53,14 +53,7 @@ export const ContactDetailsPageComponent = props => {
       linkProps: {
         name: 'PasswordChangePage',
       },
-    },
-    {
-      text: <FormattedMessage id="ContactDetailsPage.paymentsTabTitle" />,
-      selected: false,
-      linkProps: {
-        name: 'PayoutPreferencesPage',
-      },
-    },
+    }
   ];
 
   const user = ensureCurrentUser(currentUser);
@@ -90,11 +83,11 @@ export const ContactDetailsPageComponent = props => {
     <Page title={title} scrollingDisabled={scrollingDisabled}>
       <LayoutSideNavigation>
         <LayoutWrapperTopbar>
-          <TopbarContainer
+          {/* <TopbarContainer
             currentPage="ContactDetailsPage"
             desktopClassName={css.desktopTopbar}
             mobileClassName={css.mobileTopbar}
-          />
+          /> */}
           <UserNav selectedPageName="ContactDetailsPage" />
         </LayoutWrapperTopbar>
         <LayoutWrapperSideNav tabs={tabs} />

@@ -38,7 +38,7 @@ export const EditListingPoliciesFormComponent = props => (
       });
 
       const hostPresenceLabel = intl.formatMessage({ id: 'EditListingDescriptionForm.hostPresenceLabel' });
-      const hostPresencePlaceholder = intl.formatMessage({ id: 'EditListingDescriptionForm.traderCategoryPlaceholder' });
+      const hostPresencePlaceholder = intl.formatMessage({ id: 'EditListingDescriptionForm.hostPresencePlaceholder' });
       const hostPresenceRequired = required( intl.formatMessage({ id: 'EditListingDescriptionForm.hostPresenceRequired' }));
       hostPresenceOptions.map(c => {
         return c.label = intl.formatMessage({ id: c.label })

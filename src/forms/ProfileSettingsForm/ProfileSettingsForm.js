@@ -296,9 +296,6 @@ class ProfileSettingsFormComponent extends Component {
                   label={bioLabel}
                   placeholder={bioPlaceholder}
                 />
-                <p className={css.bioInfo}>
-                  <FormattedMessage id="ProfileSettingsForm.bioInfo" />
-                </p>
               </div>
               {submitError}
               <Button
