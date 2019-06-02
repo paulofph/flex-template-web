@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { amenities } from './../../marketplace-custom-config'
 import { propTypes } from '../../util/types';
 import config from '../../config';
-import { Button, FieldCheckboxGroup, Form } from '../../components';
+import { Button, FieldCheckboxGroup, FieldTextInput, Form } from '../../components';
 import { injectIntl, intlShape } from 'react-intl';
 import css from './EditListingFeaturesForm.css';
 import marketPlaceCss from './../../marketplace.css';
@@ -54,6 +54,9 @@ const EditListingFeaturesFormComponent = props => (
         option.label = intl.formatMessage({ id: amenity.label })
       })
 
+      const otherServicesLabel = intl.formatMessage({ id: 'EditListingFeaturesPanel.otherServicesLabel' });
+      const otherServicesPlaceholder = intl.formatMessage({ id: 'EditListingFeaturesPanel.otherServicesPlaceholder' });
+
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
@@ -64,6 +67,15 @@ const EditListingFeaturesFormComponent = props => (
             id={name}
             name={name}
             options={config.custom.amenities}
+          />
+
+          <FieldTextInput
+            id="otherServices"
+            name="otherServices"
+            className={css.description}
+            type="textarea"
+            label={otherServicesLabel}
+            placeholder={otherServicesPlaceholder}
           />
 
           <div className={marketPlaceCss.alignRight}>

@@ -46,6 +46,7 @@ import SectionHeading from './SectionHeading';
 import SectionPrice from './SectionPrice';
 import SectionTime from './SectionTime';
 import SectionDescriptionMaybe from './SectionDescriptionMaybe';
+import SectionOtherServicesMaybe from './SectionOtherServicesMaybe';
 import SectionCapacityMaybe from './SectionCapacityMaybe';
 import SectionDimensionsMaybe from './SectionDimensionsMaybe';
 import SectionFeaturesMaybe from './SectionFeaturesMaybe';
@@ -274,6 +275,7 @@ export class ListingPageComponent extends Component {
     );
 
     const capacity = publicData.capacity;
+    const otherServices = publicData.otherServices;
 
     const bookingTitle = (
       <FormattedMessage id="ListingPage.bookingTitle" values={{ title: richTitle }} />
@@ -479,6 +481,7 @@ export class ListingPageComponent extends Component {
                     publicData={publicData} 
                     intl={intl}
                   />
+                  <SectionOtherServicesMaybe otherServices={otherServices} />
                   <SectionRulesMaybe publicData={publicData} intl={intl} />
                   <SectionDimensionsMaybe publicData={publicData} />
                   <SectionTime timeInfo={timeInfo} />
