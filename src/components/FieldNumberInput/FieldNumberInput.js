@@ -15,7 +15,6 @@ import {
   isSafeNumber,
   unitDivisor,
   convertUnitToSubUnit,
-  convertMoneyToNumber,
   ensureDotSeparator,
   ensureSeparator,
   truncateToSubUnitPrecision,

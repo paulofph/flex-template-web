@@ -51,22 +51,37 @@ const EditListingDescriptionPanel = props => {
           traderCategory: publicData.traderCategory,
           width: +publicData.width,
           length: +publicData.length,
-          maximumDepth: publicData.maximumDepth,
-          minimumDepth: publicData.minimumDepth
+          maximumDepth: +publicData.maximumDepth,
+          minimumDepth: +publicData.minimumDepth,
+          capacity: +publicData.capacity,
+          minimumNumberToComplete: +publicData.minimumNumberToComplete
         }}
         saveActionMsg={submitButtonText}
         onSubmit={values => {
-          const { title, description, category, traderCategory, width, length, minimumDepth, maximumDepth } = values;
+          const { 
+            title, 
+            description, 
+            category, 
+            traderCategory, 
+            width, 
+            length, 
+            minimumDepth, 
+            maximumDepth,
+            capacity,
+            minimumNumberToComplete
+          } = values;
           const updateValues = {
             title: title.trim(),
             description,
             publicData: { 
               category, 
               traderCategory,
-              width,
-              length,
-              minimumDepth,
-              maximumDepth
+              width: width.toString(),
+              length: length.toString(),
+              minimumDepth: minimumDepth.toString(),
+              maximumDepth: maximumDepth.toString(),
+              capacity: capacity.toString(),
+              minimumNumberToComplete: minimumNumberToComplete.toString()
             }
           };
           onSubmit(updateValues);

@@ -11,7 +11,8 @@
   
   @media (--viewportMedium) {
     width: 100%;
-    margin: 0px;
+    margin: 0px 0px 32px 0px;
+
   }
 }
 

@@ -78,6 +78,13 @@ const EditListingDescriptionFormComponent = props => (
       const maximumDepthLabel = intl.formatMessage({ id: 'Pool.maximumDepth' }) + ' (m)';
       const maximumDepthPlaceholder = '3...';
 
+      const capacityLabel = intl.formatMessage({ id: 'EditListingDescriptionForm.capacityLabel' });
+      const capacityPlaceholder = intl.formatMessage({ id: 'EditListingDescriptionForm.capacityPlaceholder' });
+      const capacityRequiredMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.capacityRequired' });
+
+      const minimumNumberToCompleteLabel = intl.formatMessage({ id: 'EditListingDescriptionForm.minimumNumberToCompleteLabel' });
+      const minimumNumberToCompletePlaceholder = intl.formatMessage({ id: 'EditListingDescriptionForm.minimumNumberToCompletePlaceholder' });
+
       const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {};
       const errorMessageUpdateListing = updateListingError ? (
         <p className={css.error}>
@@ -148,6 +155,23 @@ const EditListingDescriptionFormComponent = props => (
             errorMessage={traderCategoryRequired}
           />
 
+          
+            <FieldNumberInput 
+              id="capacity"
+              name="capacity"
+              label={capacityLabel}
+              placeholder={capacityPlaceholder}
+              validate={composeValidators(required(capacityRequiredMessage))}
+            />
+
+            <FieldNumberInput 
+              id="minimumNumberToComplete"
+              name="minimumNumberToComplete"
+              label={minimumNumberToCompleteLabel}
+              placeholder={minimumNumberToCompletePlaceholder}
+            />
+          
+
           <div className={css.inputRow}>
             <FieldNumberInput 
               id="width"
@@ -165,6 +189,8 @@ const EditListingDescriptionFormComponent = props => (
               placeholder={lengthPlaceholder}
             />
           </div>
+
+
 
           <div className={css.inputRow}>
             <FieldNumberInput 

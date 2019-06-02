@@ -9,7 +9,6 @@ const SectionRulesMaybe = props => {
   const { className, rootClassName, publicData, intl } = props;
   const classes = classNames(rootClassName || css.root, className);
   const { hostPresence } = publicData;
-  console.log('hostPresence', hostPresence)
   let hostPresenceText
   switch(hostPresence) {
     case 'yes': {
