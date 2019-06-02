@@ -86,6 +86,12 @@ export const bookingSlots = [
   { key: 'completeDay', label: 'Time.entireDay' },
 ]
 
+export const hostPresenceOptions = [
+  { key: 'yes', label: 'HostPresence.yes' },
+  { key: 'no', label: 'HostPresence.no' },
+  { key: 'occasionally', label: 'HostPresence.occasionally' }
+]
+
 export const morningStartHour = TIME_SLOTS
 export const morningEndHour = TIME_SLOTS
 export const afternoonStartHour = TIME_SLOTS

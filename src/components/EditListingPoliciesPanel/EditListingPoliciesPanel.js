@@ -6,6 +6,7 @@ import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ensureOwnListing } from '../../util/data';
 import { ListingLink } from '../../components';
 import { EditListingPoliciesForm } from '../../forms';
+import config from '../../config';
 
 import css from './EditListingPoliciesPanel.css';
 
@@ -42,12 +43,13 @@ const EditListingPoliciesPanel = props => {
       <EditListingPoliciesForm
         className={css.form}
         publicData={publicData}
-        initialValues={{ rules: publicData.rules }}
+        initialValues={{ rules: publicData.rules, hostPresence: publicData.hostPresence }}
         onSubmit={values => {
-          const { rules = '' } = values;
+          const { rules = '', hostPresence } = values;
           const updateValues = {
             publicData: {
               rules,
+              hostPresence
             },
           };
           onSubmit(updateValues);
@@ -57,6 +59,7 @@ const EditListingPoliciesPanel = props => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         fetchErrors={errors}
+        hostPresenceOptions={config.custom.hostPresenceOptions}
       />
     </div>
   );

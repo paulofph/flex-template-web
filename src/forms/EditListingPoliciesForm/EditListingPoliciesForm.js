@@ -6,6 +6,8 @@ import { intlShape, injectIntl, FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import { propTypes } from '../../util/types';
 import { Form, Button, FieldTextInput } from '../../components';
+import { required } from '../../util/validators';
+import CategoriesSelect from './../EditListingDescriptionForm/CategoriesSelect';
 
 import css from './EditListingPoliciesForm.css';
 import marketPlaceCss from './../../marketplace.css';
@@ -25,6 +27,7 @@ export const EditListingPoliciesFormComponent = props => (
         updated,
         updateInProgress,
         fetchErrors,
+        hostPresenceOptions
       } = fieldRenderProps;
 
       const rulesLabelMessage = intl.formatMessage({
@@ -33,6 +36,13 @@ export const EditListingPoliciesFormComponent = props => (
       const rulesPlaceholderMessage = intl.formatMessage({
         id: 'EditListingPoliciesForm.rulesPlaceholder',
       });
+
+      const hostPresenceLabel = intl.formatMessage({ id: 'EditListingDescriptionForm.hostPresenceLabel' });
+      const hostPresencePlaceholder = intl.formatMessage({ id: 'EditListingDescriptionForm.traderCategoryPlaceholder' });
+      const hostPresenceRequired = required( intl.formatMessage({ id: 'EditListingDescriptionForm.hostPresenceRequired' }));
+      hostPresenceOptions.map(c => {
+        return c.label = intl.formatMessage({ id: c.label })
+      })
 
       const { updateListingError, showListingsError } = fetchErrors || {};
       const errorMessage = updateListingError ? (
@@ -55,6 +65,15 @@ export const EditListingPoliciesFormComponent = props => (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
           {errorMessageShowListing}
+
+          <CategoriesSelect
+            id="hostPresence"
+            name="hostPresence"
+            label={hostPresenceLabel}
+            placeholder={hostPresencePlaceholder}
+            categories={hostPresenceOptions}
+            errorMessage={hostPresenceRequired}
+          />
 
           <FieldTextInput
             id="rules"

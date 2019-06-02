@@ -159,6 +159,7 @@ const EditListingWizardTab = props => {
 
   switch (tab) {
     case DESCRIPTION: {
+      console.log('props', panelProps(DESCRIPTION))
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewDescription'
         : 'EditListingWizard.saveEditDescription';

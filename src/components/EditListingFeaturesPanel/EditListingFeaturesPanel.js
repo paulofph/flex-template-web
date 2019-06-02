@@ -7,7 +7,6 @@ import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ensureListing } from '../../util/data';
 import { EditListingFeaturesForm } from '../../forms';
 import { ListingLink } from '../../components';
-
 import css from './EditListingFeaturesPanel.css';
 
 const FEATURES_NAME = 'amenities';

@@ -150,6 +150,9 @@
   "EditListingDescriptionForm.categoryLabel": "Tipo de Piscina",
   "EditListingDescriptionForm.categoryPlaceholder": "Escolha o tipo da sua sua piscina...",
   "EditListingDescriptionForm.categoryRequired": "Escolha o tipo da sua piscina.",
+  "EditListingDescriptionForm.hostPresenceLabel": "Presença do anfitrião",
+  "EditListingDescriptionForm.hostPresencePlaceholder": "Estará presente na piscina...",
+  "EditListingDescriptionForm.hostPresenceRequired": "Diga se estará presente na piscina...",
   "EditListingDescriptionForm.traderCategoryLabel": "Tipo de Comerciante",
   "EditListingDescriptionForm.traderCategoryPlaceholder": "Escolha o tipo de comerciante...",
   "EditListingDescriptionForm.traderCategoryRequired": "Escolha o tipo de comerciante.",
@@ -368,6 +371,9 @@
   "ListingPage.reviewsError": "Loading reviews failed.",
   "ListingPage.reviewsHeading": "Comentários ({count})",
   "ListingPage.rulesTitle": "Regras da piscina",
+  "ListingPage.hostPresenceYesLabel": "O anfitrião estará presente na piscina.",
+  "ListingPage.hostPresenceNoLabel": "O anfitrião não estará presente na piscina.",
+  "ListingPage.hostPresenceOcassionallyLabel": "O anfitrião estará ocasionalmente presente na piscina.",
   "ListingPage.schemaTitle": "{title} - {price} | {siteTitle}",
   "ListingPage.viewImagesButton": "Ver Fotos ({count})",
   "ListingPage.yourHostHeading": "Anfitrião",
@@ -940,5 +946,8 @@
   "Time.openTime": "Abertura",
   "Time.closeTime": "Fecho",
   "User.adult": "Adulto",
-  "User.child": "Criança"
+  "User.child": "Criança",
+  "HostPresence.yes": "Sim",
+  "HostPresence.no": "Não",
+  "HostPresence.occasionally": "Ocasionalmente"
 }
