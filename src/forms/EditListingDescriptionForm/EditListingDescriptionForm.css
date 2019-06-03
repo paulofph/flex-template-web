@@ -79,9 +79,13 @@
 }
 
 .leftField {
-  margin-right: 8px;
+  @media (--viewportMedium) {
+    margin-right: 8px;
+  }
 }
 
 .rightField {
-  margin-left: 8px;
+  @media (--viewportMedium) { 
+    margin-left: 8px;
+  }
 }

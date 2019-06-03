@@ -138,7 +138,7 @@ const PayoutDetailsFormComponent = props => (
           {accountType ? (
             <React.Fragment>
               <div className={css.sectionContainer}>
-                <h3 className={css.subTitle}>Country</h3>
+                <h3 className={css.subTitle}><FormattedMessage id="PayoutDetailsForm.countryLabel" /></h3>
                 <FieldSelect
                   id="country"
                   name="country"
