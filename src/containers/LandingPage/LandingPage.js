@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -23,10 +23,15 @@ import { TopbarContainer } from '../../containers';
 import facebookImage from '../../assets/saunatimeFacebook-1200x630.jpg';
 import twitterImage from '../../assets/saunatimeTwitter-600x314.jpg';
 import css from './LandingPage.css';
+import { searchListings } from './LandingPage.duck';
 
-export const LandingPageComponent = props => {
-  const { history, intl, location, scrollingDisabled } = props;
-
+export class LandingPageComponent extends Component {
+  constructor(props) {
+    super(props)
+  }
+  
+  render() {
+  const { history, listings, intl, location, scrollingDisabled } = this.props;
   // Schema for search engines (helps them to understand what this page is about)
   // http://schema.org
   // We are using JSON-LD format
@@ -65,7 +70,7 @@ export const LandingPageComponent = props => {
           <ul className={css.sections}>
             <li className={css.section}>
               <div className={css.sectionContent}>
-                <SectionHowItWorks />
+                <SectionHowItWorks listings={listings}/>
               </div>
             </li>
           </ul>
@@ -84,6 +89,7 @@ export const LandingPageComponent = props => {
     </Page>
   );
 };
+}
 
 const { bool, object } = PropTypes;
 
@@ -99,6 +105,7 @@ LandingPageComponent.propTypes = {
 };
 
 const mapStateToProps = state => {
+  console.log('state', state)
   return {
     scrollingDisabled: isScrollingDisabled(state),
   };
@@ -115,5 +122,21 @@ const LandingPage = compose(
   connect(mapStateToProps),
   injectIntl
 )(LandingPageComponent);
+
+LandingPage.loadData = (params, search) => {
+  return searchListings({
+    page: 1,
+    perPage: 4,
+    include: ['author', 'images'],
+    'fields.listing': ['title', 'geolocation', 'price', 'description', 'publicData'],
+    'fields.user': ['profile.displayName', 'profile.abbreviatedName'],
+    'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
+    'limit.images': 1,
+  });
+};
+
+LandingPageComponent.defaultProps = {
+  listings: [],
+}
 
 export default LandingPage;

@@ -13,7 +13,7 @@ import bookImage from './images/Book.png';
 import enjoyImage from './images/Enjoy.png';
 
 const SectionHowItWorks = props => {
-  const { rootClassName, className } = props;
+  const { rootClassName, className, listings } = props;
   
 
   class LocationImage extends Component {
@@ -27,49 +27,7 @@ const SectionHowItWorks = props => {
 
   const classes = classNames(rootClassName || css.root, className);
   return (
-    <div className={classes}>
-      <div className={css.title}>
-        <FormattedMessage id="SectionHowItWorks.titleLineOne" />
-      </div>
-
-      <div className={css.steps}>
-        <div className={css.step}>
-          <div className={css.iconContainer}>
-            <img src={searchImage} className={css.icon} />
-          </div>
-          <h2 className={css.stepTitle}>
-            <FormattedMessage id="SectionHowItWorks.part1Title" />
-          </h2>
-          <p>
-            <FormattedMessage id="SectionHowItWorks.part1Text" />
-          </p>
-        </div>
-
-        <div className={css.step}>
-          <div className={css.iconContainer}>
-            <img src={bookImage} className={css.icon} />
-          </div>
-          <h2 className={css.stepTitle}>
-            <FormattedMessage id="SectionHowItWorks.part2Title" />
-          </h2>
-          <p>
-            <FormattedMessage id="SectionHowItWorks.part2Text" />
-          </p>
-        </div>
-
-        <div className={css.step}>
-          <div className={css.iconContainer}>
-            <img src={enjoyImage} className={css.icon} />
-          </div>
-          <h2 className={css.stepTitle}>
-            <FormattedMessage id="SectionHowItWorks.part3Title" />
-          </h2>
-          <p>
-            <FormattedMessage id="SectionHowItWorks.part3Text" />
-          </p>
-        </div>
-      </div>
-    </div>
+    <div>-{listings}-</div>
   );
 };
 

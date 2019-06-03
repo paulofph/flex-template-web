@@ -5,8 +5,6 @@ import { storableError } from '../../util/errors';
 import { TRANSITION_REQUEST, TRANSITION_REQUEST_AFTER_ENQUIRY } from '../../util/transaction';
 import * as log from '../../util/log';
 import { fetchCurrentUserHasOrdersSuccess } from '../../ducks/user.duck';
-import { types as sdkTypes } from '../../util/sdkLoader';
-const { Money } = sdkTypes;
 
 // ================ Action types ================ //
 
