@@ -154,6 +154,9 @@ export const EditListingPricingFormComponent = props => (
               validate={priceValidators}
             />
           </div>
+          <p>
+            <FormattedMessage id="EditListingPricingForm.taxInfo" />
+          </p>
           <div className={marketPlaceCss.alignRight}>
             <Button
               className={css.submitButton}

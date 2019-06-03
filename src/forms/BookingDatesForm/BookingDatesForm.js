@@ -174,7 +174,7 @@ export class BookingDatesFormComponent extends Component {
                 className={css.field}
                 label={childrenNumberLabel}
                 placeholder={'2...'}
-                validate={childrenNumberRequired}
+                // validate={childrenNumberRequired}
               />
 
               <FieldSelect
@@ -205,7 +205,7 @@ export class BookingDatesFormComponent extends Component {
                 />
               </p>
               <div className={submitButtonClasses}>
-                <PrimaryButton type="submit" disabled>
+                <PrimaryButton type="submit">
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
                 </PrimaryButton>
               </div>
