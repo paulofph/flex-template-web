@@ -29,13 +29,13 @@ const EditListingAvailabilityPanel = props => {
   const defaultAvailabilityPlan = {
     type: 'availability-plan/day',
     entries: [
-      { dayOfWeek: 'mon', seats: 1 },
-      { dayOfWeek: 'tue', seats: 1 },
-      { dayOfWeek: 'wed', seats: 1 },
-      { dayOfWeek: 'thu', seats: 1 },
-      { dayOfWeek: 'fri', seats: 1 },
-      { dayOfWeek: 'sat', seats: 1 },
-      { dayOfWeek: 'sun', seats: 1 },
+      { dayOfWeek: 'mon', seats: 1, startTime: '00:00', endTime: '23:55' },
+      { dayOfWeek: 'tue', seats: 1, startTime: '00:00', endTime: '23:55' },
+      { dayOfWeek: 'wed', seats: 1, startTime: '00:00', endTime: '23:55' },
+      { dayOfWeek: 'thu', seats: 1, startTime: '00:00', endTime: '23:55' },
+      { dayOfWeek: 'fri', seats: 1, startTime: '00:00', endTime: '23:55' },
+      { dayOfWeek: 'sat', seats: 1, startTime: '00:00', endTime: '23:55' },
+      { dayOfWeek: 'sun', seats: 1, startTime: '00:00', endTime: '23:55' },
     ],
   };
   const availabilityPlan = currentListing.attributes.availabilityPlan || defaultAvailabilityPlan;
@@ -63,6 +63,12 @@ const EditListingAvailabilityPanel = props => {
           // I.e. this listing is available every night.
           // Exceptions are handled with live edit through a calendar,
           // which is visible on this panel.
+          availabilityPlan.entries.forEach(entry => {
+            entry.startTime = '00:00'
+            entry.endTime = '23:55'
+          });
+          availabilityPlan.type = 'availability-plan/time';
+          availabilityPlan.timezone = 'Europe/Lisbon';
           onSubmit({ availabilityPlan });
         }}
         onChange={onChange}

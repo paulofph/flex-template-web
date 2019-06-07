@@ -171,9 +171,7 @@ class DateInputComponent extends Component {
 
     const date = value && value.date instanceof Date ? moment(value.date) : initialMoment;
 
-    const isDayBlocked = timeSlots
-      ? day => !timeSlots.find(timeSlot => timeSlotEqualsDay(timeSlot, day))
-      : () => false;
+    const isDayBlocked = () => false;
 
     const placeholder = placeholderText || intl.formatMessage({ id: 'FieldDateInput.placeholder' });
 
