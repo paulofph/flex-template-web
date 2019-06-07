@@ -4,15 +4,15 @@ import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import { lazyLoadWithDimensions } from '../../util/contextHelpers';
 
-import { NamedLink } from '../../components';
+import { NamedLink } from '..';
 
-import css from './SectionHowItWorks.css';
+import css from './SectionHowItWorksHost.css';
 
-import searchImage from './images/Search.png';
-import bookImage from './images/Book.png';
-import enjoyImage from './images/Enjoy.png';
+import addImage from './images/add.png';
+import acceptImage from './images/approve.png';
+import moneyImage from './images/money.png';
 
-const SectionHowItWorks = props => {
+const SectionHowItWorksHost = props => {
   const { rootClassName, className } = props;
   
 
@@ -28,48 +28,43 @@ const SectionHowItWorks = props => {
   const classes = classNames(rootClassName || css.root, className);
   return (
     <div className={classes}>
-      <div className={css.title}>
-        <FormattedMessage id="SectionHowItWorks.titleLineOne" />
-      </div>
-
       <div className={css.subTitle}>
-        <FormattedMessage id="SectionHowItWorks.titleLineTwo" />
+        <FormattedMessage id="SectionHowItWorksHost.titleLineTwo" />
       </div>
-
       <div className={css.steps}>
         <div className={css.step}>
           <div className={css.iconContainer}>
-            <img src={searchImage} className={css.icon} />
+            <img src={addImage} className={css.icon} />
           </div>
           <h2 className={css.stepTitle}>
-            <FormattedMessage id="SectionHowItWorks.part1Title" />
+            <FormattedMessage id="SectionHowItWorksHost.part1Title" />
           </h2>
           <p>
-            <FormattedMessage id="SectionHowItWorks.part1Text" />
+            <FormattedMessage id="SectionHowItWorksHost.part1Text" />
           </p>
         </div>
 
         <div className={css.step}>
           <div className={css.iconContainer}>
-            <img src={bookImage} className={css.icon} />
+            <img src={acceptImage} className={css.icon} />
           </div>
           <h2 className={css.stepTitle}>
-            <FormattedMessage id="SectionHowItWorks.part2Title" />
+            <FormattedMessage id="SectionHowItWorksHost.part2Title" />
           </h2>
           <p>
-            <FormattedMessage id="SectionHowItWorks.part2Text" />
+            <FormattedMessage id="SectionHowItWorksHost.part2Text" />
           </p>
         </div>
 
         <div className={css.step}>
           <div className={css.iconContainer}>
-            <img src={enjoyImage} className={css.icon} />
+            <img src={moneyImage} className={css.icon} />
           </div>
           <h2 className={css.stepTitle}>
-            <FormattedMessage id="SectionHowItWorks.part3Title" />
+            <FormattedMessage id="SectionHowItWorksHost.part3Title" />
           </h2>
           <p>
-            <FormattedMessage id="SectionHowItWorks.part3Text" />
+            <FormattedMessage id="SectionHowItWorksHost.part3Text" />
           </p>
         </div>
       </div>
@@ -77,13 +72,13 @@ const SectionHowItWorks = props => {
   );
 };
 
-SectionHowItWorks.defaultProps = { rootClassName: null, className: null };
+SectionHowItWorksHost.defaultProps = { rootClassName: null, className: null };
 
 const { string } = PropTypes;
 
-SectionHowItWorks.propTypes = {
+SectionHowItWorksHost.propTypes = {
   rootClassName: string,
   className: string,
 };
 
-export default SectionHowItWorks;
+export default SectionHowItWorksHost;

@@ -5,12 +5,6 @@
   margin-top: 0;
 }
 
-.subTitle {
-  @apply --marketplaceH2FontStyles;
-  margin-top: 0;
-  margin-bottom:36px;
-}
-
 .steps {
   display: flex;
   flex-direction: column;
@@ -19,6 +13,13 @@
     flex-direction: row;
   }
 }
+
+.subTitle {
+  @apply --marketplaceH2FontStyles;
+  margin-top: 0;
+  margin-bottom:36px;
+}
+
 
 .step {
   margin-top: 20px;

@@ -161,6 +161,7 @@ export { default as EditListingWizard } from './EditListingWizard/EditListingWiz
 export { default as Footer } from './Footer/Footer';
 export { default as SectionHero } from './SectionHero/SectionHero';
 export { default as SectionHowItWorks } from './SectionHowItWorks/SectionHowItWorks';
+export { default as SectionHowItWorksHost } from './SectionHowItWorksHost/SectionHowItWorksHost';
 export { default as SectionWhatIs } from './SectionWhatIs/SectionWhatIs';
 export { default as SectionLocations } from './SectionLocations/SectionLocations';
 export { default as SectionThumbnailLinks } from './SectionThumbnailLinks/SectionThumbnailLinks';
