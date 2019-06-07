@@ -12,7 +12,7 @@ import {
 } from '../../components';
 
 import css from './AboutPage.css';
-import image from './about-us-1056.jpg';
+import image from './BpoolAboutUs.jpeg';
 
 const AboutPage = () => {
   const { siteTwitterHandle, siteFacebookPage } = config;
@@ -21,7 +21,7 @@ const AboutPage = () => {
   // prettier-ignore
   return (
     <StaticPage
-      title="About Us"
+      title="Sobre Nós"
       schema={{
         '@context': 'http://schema.org',
         '@type': 'AboutPage',
@@ -35,7 +35,11 @@ const AboutPage = () => {
         </LayoutWrapperTopbar>
 
         <LayoutWrapperMain className={css.staticPageWrapper}>
-          <h1 className={css.pageTitle}>Experience the unique Finnish home sauna.</h1>
+          <img className={css.coverImage} src={image} alt="My first ice cream." />
+          <h2>
+          Plataforma online que te permite reservar o acesso a uma piscina durante uma manhã, tarde ou dia inteiro. Mergulha no nosso marketplace e encontra a piscina perfeita para um dia extraordinário, seja ela localizada numa casa particular ou num estabelecimento turístico. O conceito assemelha-se muito às plataformas de reserva de casas e hotéis. Neste caso, em vez de quartos ou casas, poderás reservar o acesso a uma piscina. Se tem uma piscina, torne-se já um anfitrião e ganhe rendimentos extra sem esforços.
+          </h2>
+          {/* <h1 className={css.pageTitle}>Experience the unique Finnish home sauna.</h1>
           <img className={css.coverImage} src={image} alt="My first ice cream." />
 
           <div className={css.contentWrapper}>
@@ -84,7 +88,7 @@ const AboutPage = () => {
                 <ExternalLink href={siteTwitterPage}>Twitter</ExternalLink>.
               </p>
             </div>
-          </div>
+          </div> */}
         </LayoutWrapperMain>
 
         <LayoutWrapperFooter>
