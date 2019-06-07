@@ -42,9 +42,7 @@ export const BookingBreakdownComponent = props => {
 
   return (
     <div className={classes}>
-      <LineItemUnitPriceMaybe transaction={transaction} unitType={unitType} intl={intl} />
-      <LineItemBookingPeriod transaction={transaction} booking={booking} unitType={unitType} />
-      <LineItemUnitsMaybe transaction={transaction} unitType={unitType} />
+    
 
       <LineItemUnknownItemsMaybe transaction={transaction} intl={intl} />
 
