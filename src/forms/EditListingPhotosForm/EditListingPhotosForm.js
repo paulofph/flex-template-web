@@ -8,7 +8,8 @@ import classNames from 'classnames';
 import { propTypes } from '../../util/types';
 import { nonEmptyArray, composeValidators } from '../../util/validators';
 import { isUploadImageOverLimitError } from '../../util/errors';
-import { AddImages, Button, Form, ValidationError } from '../../components';
+import { AddImages, Button, Form, ValidationError, NamedLink, FieldCheckbox } from '../../components';
+import * as validators from '../../util/validators';
 
 import css from './EditListingPhotosForm.css';
 import marketPlaceCss from './../../marketplace.css';
@@ -43,7 +44,7 @@ export class EditListingPhotosFormComponent extends Component {
         {...this.props}
         onImageUploadHandler={this.onImageUploadHandler}
         imageUploadRequested={this.state.imageUploadRequested}
-        initialValues={{ images: this.props.images }}
+        initialValues={{ images: this.props.images, acceptTermsOfService: this.props.acceptTermsOfService }}
         render={fieldRenderProps => {
           const {
             form,
@@ -63,6 +64,9 @@ export class EditListingPhotosFormComponent extends Component {
             updateInProgress,
           } = fieldRenderProps;
 
+          const acceptTermsOfServiceFilled = this.props.initialValues.acceptTermsOfService
+
+          const required = validators.required('This field is required');
           const chooseImageText = (
             <span className={css.chooseImageText}>
               <span className={css.chooseImage}>
@@ -127,7 +131,12 @@ export class EditListingPhotosFormComponent extends Component {
             invalid || disabled || submitInProgress || imageUploadRequested || ready;
 
           const classes = classNames(css.root, className);
-
+          const termsOfServiceLink = (
+            <NamedLink name="TermsOfServicePage" className={css.recoveryLink}>
+              <FormattedMessage id="EditListingPhotosForm.linkTermsOfService" />
+            </NamedLink>
+          );
+        
           return (
             <Form
               className={classes}
@@ -206,6 +215,19 @@ export class EditListingPhotosFormComponent extends Component {
               </p>
               {publishListingFailed}
               {showListingFailed}
+              { !acceptTermsOfServiceFilled
+                ? <FieldCheckbox
+                id={'acceptTermsOfService'}
+                name={'acceptTermsOfService'}
+                label={<FormattedMessage
+                  id="EditListingPhotosForm.acceptTermsOfService"
+                  values={{ termsOfServiceLink }}
+                />}
+                value={true}
+                validate={composeValidators(nonEmptyArray(imageRequiredMessage))}
+              />
+              :null
+              }
               <div className={marketPlaceCss.alignRight}>
                 <Button
                   className={css.submitButton}

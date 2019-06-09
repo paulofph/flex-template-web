@@ -44,6 +44,12 @@ class EditListingPhotosPanel extends Component {
       <FormattedMessage id="EditListingPhotosPanel.createListingTitle" />
     );
 
+    const acceptTermsOfService = currentListing && currentListing.attributes.publicData.acceptTermsOfService;
+    const initialValues = {
+      images,
+      acceptTermsOfService
+    }
+
     return (
       <div className={classes}>
         <h1 className={css.title}>{panelTitle}</h1>
@@ -52,11 +58,19 @@ class EditListingPhotosPanel extends Component {
           disabled={fetchInProgress}
           ready={newListingPublished}
           fetchErrors={errors}
-          initialValues={{ images }}
+          initialValues={initialValues}
           images={images}
           onImageUpload={onImageUpload}
           onSubmit={values => {
-            const { addImage, ...updateValues } = values;
+            let { addImage, acceptTermsOfService, images } = values;
+            const updateValues = {
+              images,
+              publicData: {
+                acceptTermsOfService: acceptTermsOfService && values.acceptTermsOfService.length > 0 
+                ? true 
+                : false
+              }
+            }
             onSubmit(updateValues);
           }}
           onChange={onChange}
