@@ -44,17 +44,11 @@ class EditListingPhotosPanel extends Component {
       <FormattedMessage id="EditListingPhotosPanel.createListingTitle" />
     );
 
-<<<<<<< HEAD
     const acceptTermsOfService = currentListing && currentListing.attributes.publicData.acceptTermsOfService;
     const initialValues = {
       images,
       acceptTermsOfService
     }
-=======
-    const { publicData } = currentListing.attributes;
-    const acceptTermsOfService = publicData && publicData.acceptTermsOfService;
-    const initialValues = { images, acceptTermsOfService };
->>>>>>> production
 
     return (
       <div className={classes}>
