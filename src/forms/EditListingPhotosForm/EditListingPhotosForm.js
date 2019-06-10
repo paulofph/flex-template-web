@@ -44,7 +44,7 @@ export class EditListingPhotosFormComponent extends Component {
         {...this.props}
         onImageUploadHandler={this.onImageUploadHandler}
         imageUploadRequested={this.state.imageUploadRequested}
-        initialValues={{ images: this.props.images }}
+        initialValues={{ images: this.props.images, acceptTermsOfService: this.props.acceptTermsOfService }}
         render={fieldRenderProps => {
           const {
             form,
@@ -63,6 +63,8 @@ export class EditListingPhotosFormComponent extends Component {
             updated,
             updateInProgress,
           } = fieldRenderProps;
+
+          const acceptTermsOfServiceFilled = this.props.initialValues.acceptTermsOfService
 
           const required = validators.required('This field is required');
           const chooseImageText = (
@@ -213,7 +215,8 @@ export class EditListingPhotosFormComponent extends Component {
               </p>
               {publishListingFailed}
               {showListingFailed}
-              <FieldCheckbox
+              { !acceptTermsOfServiceFilled
+                ? <FieldCheckbox
                 id={'acceptTermsOfService'}
                 name={'acceptTermsOfService'}
                 label={<FormattedMessage
@@ -223,6 +226,8 @@ export class EditListingPhotosFormComponent extends Component {
                 value={true}
                 validate={composeValidators(nonEmptyArray(imageRequiredMessage))}
               />
+              :null
+              }
               <div className={marketPlaceCss.alignRight}>
                 <Button
                   className={css.submitButton}

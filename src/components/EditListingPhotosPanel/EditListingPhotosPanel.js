@@ -44,9 +44,17 @@ class EditListingPhotosPanel extends Component {
       <FormattedMessage id="EditListingPhotosPanel.createListingTitle" />
     );
 
+<<<<<<< HEAD
+    const acceptTermsOfService = currentListing && currentListing.attributes.publicData.acceptTermsOfService;
+    const initialValues = {
+      images,
+      acceptTermsOfService
+    }
+=======
     const { publicData } = currentListing.attributes;
     const acceptTermsOfService = publicData && publicData.acceptTermsOfService;
     const initialValues = { images, acceptTermsOfService };
+>>>>>>> production
 
     return (
       <div className={classes}>
@@ -60,9 +68,16 @@ class EditListingPhotosPanel extends Component {
           images={images}
           onImageUpload={onImageUpload}
           onSubmit={values => {
-            console.log(values)
-            // const { addImage, ...updateValues } = values;
-            // onSubmit(updateValues);
+            let { addImage, acceptTermsOfService, images } = values;
+            const updateValues = {
+              images,
+              publicData: {
+                acceptTermsOfService: acceptTermsOfService && values.acceptTermsOfService.length > 0 
+                ? true 
+                : false
+              }
+            }
+            onSubmit(updateValues);
           }}
           onChange={onChange}
           onUpdateImageOrder={onUpdateImageOrder}
