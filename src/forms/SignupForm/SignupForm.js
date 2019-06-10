@@ -5,11 +5,16 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { Form as FinalForm } from 'react-final-form';
 import classNames from 'classnames';
 import * as validators from '../../util/validators';
-import { Form, PrimaryButton, FieldTextInput } from '../../components';
+import { Form, PrimaryButton, FieldTextInput, NamedLink } from '../../components';
 
 import css from './SignupForm.css';
 
 const KEY_CODE_ENTER = 13;
+const termsOfServiceLink = (
+  <NamedLink name="TermsOfServicePage" className={css.recoveryLink}>
+    <FormattedMessage id="SignupForm.linkTermsOfService" />
+  </NamedLink>
+);
 
 const SignupFormComponent = props => (
   <FinalForm
@@ -177,10 +182,14 @@ const SignupFormComponent = props => (
           <div className={css.bottomWrapper}>
             <p className={css.bottomWrapperText}>
               <span className={css.termsText}>
-                <FormattedMessage
+                {/* <FormattedMessage
                   id="SignupForm.termsAndConditionsAcceptText"
                   values={{ termsLink }}
-                />
+                /> */}
+                {<FormattedMessage
+                  id="SignupForm.acceptTermsOfService"
+                  values={{ termsOfServiceLink }}
+                />}
               </span>
             </p>
             <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}>

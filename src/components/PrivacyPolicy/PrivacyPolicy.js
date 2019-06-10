@@ -11,7 +11,7 @@ const PrivacyPolicy = props => {
   // prettier-ignore
   return (
     <div className={classes}>
-      <p className={css.lastUpdated}>Última Actualização: 09 de Outubro, 2019</p>
+      <p className={css.lastUpdated}>Última Actualização: 09 de Junho, 2019</p>
 
       <p>
         POR FAVOR, LEIA ESTES TERMOS e CUIDADOSAMENTE, pois eles contêm informações importantes sobre seus direitos legais, recursos e obrigações. AO CONCORDAR COM ESTES TERMOS, VOCÊ RECONHECE QUE LEU E COMPREENDEU QUE ESTÁ DE VINCULAÇÃO A UM ACORDO LEGAL ENTRE VOCÊ E A B'POOL. Se aceita ou concordar com estes termos em nome de uma empresa ou outra entidade legal, você declara e garante que tem autoridade para vincular essa empresa ou outra entidade legal a estes termos. Se não concorda com estes termos, você não poderá acessar ou utilizar os Serviços da Bpool.
