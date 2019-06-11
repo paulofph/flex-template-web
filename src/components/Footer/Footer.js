@@ -96,16 +96,6 @@ const Footer = props => {
                     <FormattedMessage id="Footer.toFAQPage" />
                   </NamedLink>
                 </li>
-                <li className={css.listItem}>
-                  <NamedLink name="LandingPage" className={css.link}>
-                    <FormattedMessage id="Footer.toHelpPage" />
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="AboutPage" to={{ hash: '#contact' }} className={css.link}>
-                    <FormattedMessage id="Footer.toContactPage" />
-                  </NamedLink>
-                </li>
               </ul>
             </div>
             <div className={css.searches}>
@@ -116,6 +106,12 @@ const Footer = props => {
               <div className={css.someLinks}>{socialMediaLinks}</div>
               <div className={css.legalMatters}>
                 <ul className={css.tosAndPrivacy}>
+                  <li>
+                    <p className={css.email}>info@thebpool.com</p>
+                  </li>
+                  <li>
+                    <p className={css.email}>+351 912 729 869</p>
+                  </li>
                   <li>
                     <NamedLink name="TermsOfServicePage" className={css.legalLink}>
                       <FormattedMessage id="Footer.termsOfUse" />
