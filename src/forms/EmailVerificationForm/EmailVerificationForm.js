@@ -74,10 +74,6 @@ const EmailVerificationFormComponent = props => (
             <h1 className={css.modalTitle}>
               <FormattedMessage id="EmailVerificationForm.successTitle" values={{ name }} />
             </h1>
-
-            <p className={css.modalMessage}>
-              <FormattedMessage id="EmailVerificationForm.successText" />
-            </p>
           </div>
 
           <div className={css.bottomWrapper}>
