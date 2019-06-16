@@ -47,6 +47,9 @@ const RedirectToLandingPage = () => <NamedRedirect name="LandingPage" />;
 const routeConfiguration = () => {
   return [
     {
+      path: '/google5f3f48bd9215720e.html'
+    },
+    {
       path: '/',
       name: 'LandingPage',
       component: props => <LandingPage {...props} />,
