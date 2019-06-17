@@ -298,8 +298,8 @@ class SearchFiltersMobileComponent extends Component {
             <div className={css.filtersWrapper}>
               {categoryFilterElement}
               {amenitiesFilterElement}
-              {priceFilterElement}
-              {dateRangeFilterElement}
+              {/* {priceFilterElement}
+              {dateRangeFilterElement} */}
             </div>
           }
         </ModalInMobile>
