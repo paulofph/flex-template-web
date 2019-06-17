@@ -106,7 +106,7 @@
 }
 
 .searchFiltersDesktop {
-  padding: 16px 24px;
+  padding: 8px 8px;
 
   @media (--viewportMedium) {
     
@@ -177,7 +177,7 @@
   }
 
   @media (--viewportLarge) {
-    width: 37.5vw;
+    width: 35vw;
   }
 }
 

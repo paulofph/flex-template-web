@@ -8,7 +8,7 @@
   /* sticky result summary in mobile */
   position: sticky;
   top: 0;
-  max-width: 350px;
+  max-width: 300px;
 }
 
 .searchResultSummary {
