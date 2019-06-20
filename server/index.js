@@ -54,6 +54,7 @@ const cspEnabled = CSP === 'block' || CSP === 'report';
 const app = express();
 
 const errorPage = fs.readFileSync(path.join(buildPath, '500.html'), 'utf-8');
+const googleSeoPage = fs.readFileSync(path.join(buildPath, 'google5f3f48bd9215720e.html'), 'utf-8');
 
 // load sitemap and robots file structure
 // and write those into files
@@ -194,6 +195,9 @@ app.get('*', (req, res) => {
   dataLoader
     .loadData(req.url, sdk)
     .then(preloadedState => {
+      if(req.url.includes('google5f3f48bd9215720e')) {
+        res.status(500).send(googleSeoPage);
+      }
       const html = renderer.render(req.url, context, preloadedState);
 
       if (dev) {
