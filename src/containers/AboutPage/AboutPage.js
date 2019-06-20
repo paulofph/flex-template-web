@@ -37,7 +37,7 @@ const AboutPage = () => {
         <LayoutWrapperMain className={css.staticPageWrapper}>
           <img className={css.coverImage} src={image} alt="My first ice cream." />
           <h2>
-          Plataforma online que te permite reservar o acesso a uma piscina durante uma manhã, tarde ou dia inteiro. Mergulha no nosso marketplace e encontra a piscina perfeita para um dia extraordinário, seja ela localizada numa casa particular ou num estabelecimento turístico. O conceito assemelha-se muito às plataformas de reserva de casas e hotéis. Neste caso, em vez de quartos ou casas, poderás reservar o acesso a uma piscina. Se tem uma piscina, torne-se já um anfitrião e ganhe rendimentos extra sem esforços.
+          Plataforma online que te permite alugar uma piscina durante uma manhã, tarde ou dia inteiro. Mergulha no nosso marketplace e encontra a piscina perfeita para um dia extraordinário, seja ela localizada numa casa particular ou num estabelecimento turístico. O conceito assemelha-se muito às plataformas de reserva de casas e hotéis. Neste caso, em vez de quartos ou casas, poderás reservar o acesso a uma piscina. Se tem uma piscina, torne-se já um anfitrião e ganhe rendimentos extra sem esforços.
           </h2>
           {/* <h1 className={css.pageTitle}>Experience the unique Finnish home sauna.</h1>
           <img className={css.coverImage} src={image} alt="My first ice cream." />
