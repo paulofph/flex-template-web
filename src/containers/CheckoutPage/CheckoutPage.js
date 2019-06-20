@@ -46,13 +46,13 @@ const { Money } = sdkTypes;
 
 const STORAGE_KEY = 'CheckoutPage';
 
-const getBookingTime = (listing, bookingData, bookingDate) => {
-  
+const getBookingDetails = (listing, bookingData, bookingDate) => {
   const { publicData } = listing.attributes;
-  const { timeSlot } = bookingData;
+  const { timeSlot, adultsNumber, childrenNumber } = bookingData;
   const bookingStartAPI = new Date(bookingDate);
   const bookingEndAPI = new Date(bookingDate);
-  // console.log({publicData, timeSlot})
+  let childPrice;
+  let adultPrice;
 
   const listingTimeSlots = {
     morning: {
@@ -84,6 +84,9 @@ const getBookingTime = (listing, bookingData, bookingDate) => {
 
       bookingEndAPI.setHours(listingTimeSlots.morning.end.hour)
       bookingEndAPI.setMinutes(listingTimeSlots.morning.end.minutes)
+
+      childPrice = publicData.priceMorningChild
+      adultPrice = publicData.priceMorningAdult
       break;
     }
     case 'afternoon': {
@@ -92,6 +95,9 @@ const getBookingTime = (listing, bookingData, bookingDate) => {
 
       bookingEndAPI.setHours(listingTimeSlots.afternoon.end.hour)
       bookingEndAPI.setMinutes(listingTimeSlots.afternoon.end.minutes)
+
+      childPrice = publicData.priceAfternoonChild
+      adultPrice = publicData.priceAfternoonAdult
       break;
     }
     case 'completeDay': {
@@ -100,20 +106,20 @@ const getBookingTime = (listing, bookingData, bookingDate) => {
 
       bookingEndAPI.setHours(listingTimeSlots.afternoon.end.hour)
       bookingEndAPI.setMinutes(listingTimeSlots.afternoon.end.minutes)
+
+      childPrice = publicData.priceDayChild
+      adultPrice = publicData.priceDayAdult
       break
     }
   }
   
-  // console.log(pageData)
-  // let testDate = bookingStart
-  // testDate.setHours(8);
-  // console.log({pageData, testDate})
-
-
-
   return {
     bookingStartAPI,
-    bookingEndAPI
+    bookingEndAPI,
+    childPrice,
+    adultPrice,
+    childrenNumber,
+    adultsNumber
   }
 }
 
@@ -205,8 +211,15 @@ export class CheckoutPageComponent extends Component {
   
 
       // Set Booking Interval
-      const { bookingStartAPI, bookingEndAPI } = getBookingTime(pageData.listing, pageData.bookingData, bookingStart)
-    
+      const { 
+        bookingStartAPI, 
+        bookingEndAPI, 
+        childPrice, 
+        adultPrice, 
+        adultsNumber, 
+        childrenNumber
+      } = getBookingDetails(pageData.listing, pageData.bookingData, bookingStart)
+      
       fetchSpeculatedTransaction({
         listingId,
         bookingStart: bookingStartAPI,
@@ -214,13 +227,13 @@ export class CheckoutPageComponent extends Component {
         lineItems: [
           {
             code: 'line-item/adults',
-            unitPrice: new Money(8000, 'EUR'),
-            quantity: 3,
+            unitPrice: new Money(adultPrice, 'EUR'),
+            quantity: +adultsNumber,
           },
           {
             code: 'line-item/children',
-            unitPrice: new Money(5000, 'EUR'),
-            quantity: 3,
+            unitPrice: new Money(childPrice, 'EUR'),
+            quantity: +childrenNumber,
           }
         ]
       });
@@ -662,7 +675,9 @@ const mapDispatchToProps = dispatch => ({
   sendOrderRequest: (params, initialMessage) => dispatch(initiateOrder(params, initialMessage)),
   sendOrderRequestAfterEnquiry: (transactionId, params) =>
     dispatch(initiateOrderAfterEnquiry(transactionId, params)),
-  fetchSpeculatedTransaction: params => dispatch(speculateTransaction(params)),
+  fetchSpeculatedTransaction: params => {
+    return dispatch(speculateTransaction(params))
+  },
 });
 
 const CheckoutPage = compose(

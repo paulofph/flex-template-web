@@ -139,10 +139,8 @@ const BookingPanel = props => {
 
         {showBookingDatesForm ? (
           <Button
-            disabled
             rootClassName={css.bookButton}
             onClick={() => openBookModal(isOwnListing, isClosed, history, location)}
-            
           >
             <FormattedMessage id="BookingPanel.ctaButtonMessage" />
           </Button>
