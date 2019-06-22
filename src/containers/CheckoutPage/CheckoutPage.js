@@ -247,7 +247,7 @@ export class CheckoutPageComponent extends Component {
       return;
     }
     this.setState({ submitting: true });
-
+    
     const cardToken = values.token;
     const initialMessage = values.message;
     const {
@@ -257,15 +257,21 @@ export class CheckoutPageComponent extends Component {
       speculatedTransaction,
       dispatch,
     } = this.props;
-
+    
     // Create order aka transaction
     // NOTE: if unit type is line-item/units, quantity needs to be added.
     // The way to pass it to checkout page is through pageData.bookingData
+    const lineItems = [
+      speculatedTransaction.attributes.lineItems[0],
+      speculatedTransaction.attributes.lineItems[1]
+    ]
+
     const requestParams = {
       listingId: this.state.pageData.listing.id,
       cardToken,
       bookingStart: speculatedTransaction.booking.attributes.start,
       bookingEnd: speculatedTransaction.booking.attributes.end,
+      lineItems
     };
 
     const enquiredTransaction = this.state.pageData.enquiredTransaction;
@@ -673,11 +679,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   dispatch,
   sendOrderRequest: (params, initialMessage) => dispatch(initiateOrder(params, initialMessage)),
-  sendOrderRequestAfterEnquiry: (transactionId, params) =>
-    dispatch(initiateOrderAfterEnquiry(transactionId, params)),
-  fetchSpeculatedTransaction: params => {
-    return dispatch(speculateTransaction(params))
-  },
+  sendOrderRequestAfterEnquiry: (transactionId, params) => dispatch(initiateOrderAfterEnquiry(transactionId, params)),
+  fetchSpeculatedTransaction: params => dispatch(speculateTransaction(params))
 });
 
 const CheckoutPage = compose(

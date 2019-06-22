@@ -348,6 +348,6 @@ export const humanizeLineItemCode = code => {
     throw new Error(`Invalid line item code: ${code}`);
   }
   const lowercase = code.replace(/^line-item\//, '').replace(/-/g, ' ');
-
+  console.log(code, lowercase.charAt(0).toUpperCase() + lowercase.slice(1))
   return lowercase.charAt(0).toUpperCase() + lowercase.slice(1);
 };

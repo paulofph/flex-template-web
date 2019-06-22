@@ -214,21 +214,6 @@ export const speculateTransaction = params => (dispatch, getState, sdk) => {
     expand: true,
   };
 
-  // orderParams.lineItems = [
-  //   {
-  //     code: 'line-item/morning-adult',
-  //     unitPrice: new Money(800, 'EUR'),
-  //     quantity: 4,
-  //   },
-  //   {
-  //     code: 'line-item/morning-child',
-  //     unitPrice: new Money(800, 'EUR'),
-  //     quantity: 2,
-  //   }
-  // ]
-
-  console.log()
-
   return sdk.transactions
     .initiateSpeculative(bodyParams, queryParams)
     .then(response => {
