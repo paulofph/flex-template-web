@@ -90,7 +90,7 @@ const siteTwitterHandle = null;
 const siteInstagramPage = 'https://www.instagram.com/bpoolcompany/';
 
 // Facebook page is used in SEO schema (http://schema.org/Organization)
-const siteFacebookPage = 'https://www.facebook.com/becoolinpool/';
+const siteFacebookPage = 'https://www.facebook.com/becoolinthepool';
 
 // Facebook counts shares with app or page associated by this id
 // Currently it is unset, but you can read more about fb:app_id from
