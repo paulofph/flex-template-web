@@ -26,6 +26,7 @@ import {
 } from './SearchPage.helpers';
 import MainPanel from './MainPanel';
 import css from './SearchPage.css';
+import { traderCategories } from './../../marketplace-custom-config'
 
 // Pagination page size might need to be dynamic on responsive page layouts
 // Current design has max 3 columns 12 is divisible by 2 and 3
@@ -58,11 +59,14 @@ export class SearchPageComponent extends Component {
     // Currently, if you want to use them, we need to manually configure them to be available
     // for search queries. Read more from extended data document:
     // https://www.sharetribe.com/docs/references/extended-data/#data-schema
-
     return {
       categoryFilter: {
         paramName: 'pub_category',
         options: categories,
+      },
+      traderCategoryFilter: {
+        paramName: 'pub_traderCategory',
+        options: traderCategories,
       },
       amenitiesFilter: {
         paramName: 'pub_amenities',
@@ -217,6 +221,7 @@ export class SearchPageComponent extends Component {
             showAsModalMaxWidth={MODAL_BREAKPOINT}
             primaryFilters={{
               categoryFilter: filters.categoryFilter,
+              traderCategoryFilter: filters.traderCategoryFilter,
               amenitiesFilter: filters.amenitiesFilter,
               priceFilter: filters.priceFilter,
               dateRangeFilter: filters.dateRangeFilter,

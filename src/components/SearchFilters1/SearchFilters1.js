@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import omit from 'lodash/omit';
-import { categories, amenities } from './../../marketplace-custom-config'
+import { categories, traderCategories, amenities } from './../../marketplace-custom-config'
 import routeConfiguration from '../../routeConfiguration';
 import { parseDateFromISO8601, stringifyDateToISO8601 } from '../../util/dates';
 import { createResourceLocatorString } from '../../util/routes';
@@ -182,6 +182,7 @@ class SearchFiltersMobileComponent extends Component {
       onManageDisableScrolling,
       selectedFiltersCount,
       categoryFilter,
+      traderCategoryFilter,
       amenitiesFilter,
       priceFilter,
       dateRangeFilter,
@@ -193,9 +194,6 @@ class SearchFiltersMobileComponent extends Component {
     const resultsFound = (
       <FormattedMessage id="SearchFilters.foundResults" values={{ count: resultsCount }} />
     );
-    const noResults = <FormattedMessage id="SearchFilters.noResultsMobile" />;
-    const loadingResults = <FormattedMessage id="SearchFilters.loadingResultsMobile" />;
-    const filtersHeading = intl.formatMessage({ id: 'SearchFiltersMobile.heading' });
     const modalCloseButtonMessage = intl.formatMessage({ id: 'SearchFiltersMobile.cancel' });
 
     const showListingsLabel = intl.formatMessage(
@@ -210,16 +208,21 @@ class SearchFiltersMobileComponent extends Component {
       id: 'SearchFiltersMobile.categoryLabel',
     });
 
+    const traderCategoryLabel = intl.formatMessage({
+      id: 'SearchFiltersMobile.traderCategoryLabel',
+    });
+
     const initialCategory = categoryFilter ? this.initialValue(categoryFilter.paramName) : null;
+    const initialTraderCategory = traderCategoryFilter ? this.initialValue(traderCategoryFilter.paramName) : null;
   
     categoryFilter.options.map(option => {
       const category = categories.find(c => c.key === option.key)
       option.label = intl.formatMessage({ id: category.label })
     })
 
-    categoryFilter.options.map(option => {
-      const category = categories.find(c => c.key === option.key)
-      option.label = intl.formatMessage({ id: category.label })
+    traderCategoryFilter.options.map(option => {
+      const traderCategory = traderCategories.find(c => c.key === option.key)
+      option.label = intl.formatMessage({ id: traderCategory.label })
     })
 
     amenitiesFilter.options.map(option => {
@@ -235,6 +238,18 @@ class SearchFiltersMobileComponent extends Component {
         liveEdit
         options={categoryFilter.options}
         initialValue={initialCategory}
+        intl={intl}
+      />
+    ) : null;
+
+    const traderCategoryFilterElement = traderCategoryFilter ? (
+      <SelectSingleFilter
+        urlParam={traderCategoryFilter.paramName}
+        label={traderCategoryLabel}
+        onSelect={this.handleSelectSingle}
+        liveEdit
+        options={traderCategoryFilter.options}
+        initialValue={initialTraderCategory}
         intl={intl}
       />
     ) : null;
@@ -297,6 +312,7 @@ class SearchFiltersMobileComponent extends Component {
           {
             <div className={css.filtersWrapper}>
               {categoryFilterElement}
+              {traderCategoryFilterElement}
               {amenitiesFilterElement}
               {/* {priceFilterElement}
               {dateRangeFilterElement} */}

@@ -734,6 +734,7 @@
   "SearchFiltersMobile.amenitiesLabel": "Comodidades",
   "SearchFiltersMobile.cancel": "Fechar",
   "SearchFiltersMobile.categoryLabel": "Tipo de Piscina",
+  "SearchFiltersMobile.traderCategoryLabel": "Tipo de Anfitrião",
   "SearchFiltersMobile.heading": "Filtros",
   "SearchFiltersMobile.resetAll": "Limpar todos",
   "SearchFiltersMobile.showListings": "Ver {count, number} {count, plural, one {piscina} other {piscinas}}",
