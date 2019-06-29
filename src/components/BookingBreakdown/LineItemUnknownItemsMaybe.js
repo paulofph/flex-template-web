@@ -29,7 +29,6 @@ const LineItemUnknownItemsMaybe = props => {
     <React.Fragment>
       {items.map((item, i) => {
         const label = humanizeLineItemCode(item.code);
-        console.log(1, label)
         const formattedTotal = formatMoney(intl, item.lineTotal);
         return (
           <div key={`${i}-item.code`} className={css.lineItem}>

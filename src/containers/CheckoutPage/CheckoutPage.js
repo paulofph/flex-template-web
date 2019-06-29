@@ -206,7 +206,36 @@ export class CheckoutPageComponent extends Component {
 
       // Set Booking Interval
       const { bookingStartAPI, bookingEndAPI } = getBookingTime(pageData.listing, pageData.bookingData, bookingStart)
-    
+
+      let { adultsNumber, childrenNumber, timeSlot } = pageData.bookingData;
+      const publicData = pageData.listing.attributes.publicData
+      let priceAdult
+      let priceChild
+
+      switch(timeSlot) {
+        case 'morning': {
+          priceAdult = publicData.priceMorningAdult
+          priceChild = publicData.priceMorningChild
+          break;
+        }
+        case 'afternoon':
+          priceAdult = publicData.priceAfternoonAdult
+          priceChild = publicData.priceAfternoonChild
+          break;
+        case 'completeDay':
+          priceAdult = publicData.priceDayAdult
+          priceChild = publicData.priceDayChild
+          break;
+        default:{
+          priceAdult = publicData.priceAfternoonAdult
+          priceChild = publicData.priceAfternoonChild
+          break;
+        }
+      }
+
+      adultsNumber = +adultsNumber || 0
+      childrenNumber = +childrenNumber || 0
+      
       fetchSpeculatedTransaction({
         listingId,
         bookingStart: bookingStartAPI,
@@ -214,13 +243,13 @@ export class CheckoutPageComponent extends Component {
         lineItems: [
           {
             code: 'line-item/adults',
-            unitPrice: new Money(8000, 'EUR'),
-            quantity: 3,
+            unitPrice: new Money(priceAdult, 'EUR'),
+            quantity: adultsNumber,
           },
           {
             code: 'line-item/children',
-            unitPrice: new Money(5000, 'EUR'),
-            quantity: 3,
+            unitPrice: new Money(priceChild, 'EUR'),
+            quantity: childrenNumber,
           }
         ]
       });
@@ -248,11 +277,15 @@ export class CheckoutPageComponent extends Component {
     // Create order aka transaction
     // NOTE: if unit type is line-item/units, quantity needs to be added.
     // The way to pass it to checkout page is through pageData.bookingData
+
+    console.log('speculatedTransaction.booking', speculatedTransaction, values)
+
     const requestParams = {
       listingId: this.state.pageData.listing.id,
       cardToken,
       bookingStart: speculatedTransaction.booking.attributes.start,
       bookingEnd: speculatedTransaction.booking.attributes.end,
+      lineItems: speculatedTransaction.attributes.lineItems
     };
 
     const enquiredTransaction = this.state.pageData.enquiredTransaction;
@@ -465,11 +498,6 @@ export class CheckoutPageComponent extends Component {
     const topbar = (
       <div className={css.topbar}>
         <NamedLink className={css.home} name="LandingPage">
-          <Logo
-            className={css.logoMobile}
-            title={intl.formatMessage({ id: 'CheckoutPage.goToLandingPage' })}
-            format="mobile"
-          />
           <Logo
             className={css.logoDesktop}
             alt={intl.formatMessage({ id: 'CheckoutPage.goToLandingPage' })}
