@@ -10,7 +10,7 @@
  * component for them that can be used in the `BookingBreakdown` component.
  */
 import React from 'react';
-import { intlShape } from 'react-intl';
+import { intlShape, FormattedMessage } from 'react-intl';
 import { formatMoney } from '../../util/currency';
 import { humanizeLineItemCode } from '../../util/data';
 import { LINE_ITEMS, propTypes } from '../../util/types';
@@ -29,10 +29,11 @@ const LineItemUnknownItemsMaybe = props => {
     <React.Fragment>
       {items.map((item, i) => {
         const label = humanizeLineItemCode(item.code);
+        console.log(1, label)
         const formattedTotal = formatMoney(intl, item.lineTotal);
         return (
           <div key={`${i}-item.code`} className={css.lineItem}>
-            <span className={css.itemLabel}>{label}</span>
+            <span className={css.itemLabel}><FormattedMessage id={label} /></span>
             <span className={css.itemValue}>{formattedTotal}</span>
           </div>
         );

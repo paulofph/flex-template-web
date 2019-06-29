@@ -55,7 +55,7 @@
   "BookingBreakdown.refundCustomerFee": "Refund B'pool fee",
   "BookingBreakdown.refundProviderFee": "Refund B'pool fee",
   "BookingBreakdown.subTotal": "Subtotal",
-  "BookingBreakdown.total": "Total price",
+  "BookingBreakdown.total": "Total",
   "BookingDatesForm.bookingEndTitle": "End date",
   "BookingDatesForm.bookingStartTitle": "Start date",
   "BookingDatesForm.bookingDateTitle": "Data",
@@ -94,12 +94,12 @@
   "CheckoutPage.initiateOrderError": "Payment request failed. Please go back to {listingLink} and try again. If the error persists, try refreshing the page or contacting the marketplace administrator.",
   "CheckoutPage.initiateOrderStripeError": "The payment processor gave the following errors: {stripeErrors}",
   "CheckoutPage.listingNotFoundError": "Unfortunately, the listing is no longer available.",
-  "CheckoutPage.loadingData": "Loading checkout data…",
+  "CheckoutPage.loadingData": "A carregar dados de reserva…",
   "CheckoutPage.paymentInfo": "Apenas será cobrado se o pedido for aceite pelo anfitrião.",
   "CheckoutPage.perDay": "por dia",
   "CheckoutPage.perNight": "per night",
   "CheckoutPage.perUnit": "per unit",
-  "CheckoutPage.priceBreakdownTitle": "Booking breakdown",
+  "CheckoutPage.priceBreakdownTitle": "Detalhes de Reserva",
   "CheckoutPage.providerStripeAccountMissingError": "The listing author has not added their payment information and the listing cannot be booked at the moment.",
   "CheckoutPage.speculateFailedMessage": "Oops, something went wrong. Please refresh the page and try again.",
   "CheckoutPage.speculateTransactionError": "Failed to fetch breakdown information.",
@@ -1006,5 +1006,6 @@
   "FAQPage.checkBookingsAnswer": "Todas as notificações e actividade poderá ser consultada no {inboxLink}",
   "FAQPage.checkBookingsLink": "link",
   "FAQPage.invoiceQuestion": "10.  Sendo anfitrião, como se processa os recebimentos?",
-  "FAQPage.invoiceAnswer": "O pagamento é feito via Stripe por débito direto do número do cartão de crédito do Cliente ou pelo Débito Direto SEPA. O pagamento será processado para a sua conta no dia da reserva. O valor será integralmente transferido para a vossa conta, descontando as taxas de pagamento cobradas pella Stripe (mais info:https://stripe.com/en-pt/pricing). A bpool cobrará a sua taxa de utilização da plataforma (15% + IVA) quinzenalmente ou mensalmente."
+  "Adults": "Adultos",
+  "Children": "Crianças"
 }
