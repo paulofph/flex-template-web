@@ -359,6 +359,8 @@
   "ListingCard.perUnit": "per unit",
   "ListingCard.unsupportedPrice": "({currency})",
   "ListingCard.unsupportedPriceTitle": "Unsupported currency ({currency})",
+  "ListingCard.capacity": "Capacidade:",
+  "ListingCard.people": " {count, number} {count, plural, one {pessoa} other {pessoas}}",
   "ListingPage.bookingSubTitle": "Escolha a data.",
   "ListingPage.bookingTitle": "Reservar {title}",
   "ListingPage.closedListing": "This listing has been closed and can't be booked.",

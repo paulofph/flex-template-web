@@ -50,7 +50,7 @@ export const ListingCardComponent = props => {
   const id = currentListing.id.uuid;
   const { title = '', description } = currentListing.attributes;
   const price = new Money(priceAfternoonAdult, 'EUR')
-  const { category, traderCategory } = currentListing.attributes.publicData;
+  const { category, traderCategory, capacity } = currentListing.attributes.publicData;
   const poolAmenities = currentListing.attributes.publicData.amenities;
   const categoryUi = intl.formatMessage({
     id: categories.find(c => c.key === category).label
@@ -59,6 +59,11 @@ export const ListingCardComponent = props => {
     id: traderCategories.find(c => c.key === traderCategory).label
   })
 
+  const capacityLabel = intl.formatMessage({ id: 'ListingCard.capacity' }) + 
+  intl.formatMessage(
+    { id: 'ListingCard.people' },
+    { count: capacity }
+  );
   
   const amenitiesUi = poolAmenities.map(amenity => {
     const configAmenity = amenities.find(a => a.key === amenity )
@@ -76,14 +81,9 @@ export const ListingCardComponent = props => {
     currentListing.images && currentListing.images.length > 0 ? currentListing.images[0] : null;
 
   const { formattedPrice, priceTitle } = priceData(price, intl);
-  const unitType = config.bookingUnitType;
-  const isNightly = unitType === LINE_ITEM_NIGHT;
-  const isDaily = unitType === LINE_ITEM_DAY;
 
   const unitTranslationKey = 'ListingCard.perAfternoon';
   
-  const infoBoxCss = classNames(marketCss.row, marketCss.fullWidth, marketCss.p);
-  const mainBox = classNames(marketCss.column, marketCss.fullWidth);
   const categoryCss = classNames(css.authorInfo, );
   return (
     <NamedLink className={css.root1} name="ListingPage" params={{ id, slug }}>
@@ -123,6 +123,9 @@ export const ListingCardComponent = props => {
             />
           </div>
         ))}
+        </div>
+        <div>
+          <div className={categoryCss}><h5 className={marketCss.noMargin}>{capacityLabel}</h5></div>
         </div>
         <div>
           <div className={categoryCss}><h5 className={marketCss.noMargin}>{`Anunciante: ${authorName}`}</h5></div>
