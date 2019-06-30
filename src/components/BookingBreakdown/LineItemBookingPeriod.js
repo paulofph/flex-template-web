@@ -7,39 +7,23 @@ import { daysBetween, dateFromAPIToLocalNoon } from '../../util/dates';
 import css from './BookingBreakdown.css';
 
 const BookingPeriod = props => {
-  const { isSingleDay, startDate, endDate } = props;
+  const { startDate, endDate } = props;
+
+  const isSingleDay = true
+
   const dateFormatOptions = {
     weekday: 'short',
     month: 'short',
     day: 'numeric',
   };
 
-  if (isSingleDay) {
-    return <FormattedDate value={startDate} {...dateFormatOptions} />;
-  }
-
-  return (
-    <FormattedMessage
-      id="BookingBreakdown.bookingPeriod"
-      values={{
-        bookingStart: (
-          <span className={css.nowrap}>
-            <FormattedDate value={startDate} {...dateFormatOptions} />
-          </span>
-        ),
-        bookingEnd: (
-          <span className={css.nowrap}>
-            <FormattedDate value={endDate} {...dateFormatOptions} />
-          </span>
-        ),
-      }}
-    />
-  );
+  return <FormattedDate value={startDate} {...dateFormatOptions} />;
 };
+
+
 
 const LineItemBookingPeriod = props => {
   const { transaction, booking, unitType } = props;
-
   // Attributes: displayStart and displayEnd can be used to differentiate shown time range
   // from actual start and end times used for availability reservation. It can help in situations
   // where there are preparation time needed between bookings.
@@ -47,6 +31,10 @@ const LineItemBookingPeriod = props => {
   const { start, end, displayStart, displayEnd } = booking.attributes;
   const localStartDate = dateFromAPIToLocalNoon(displayStart || start);
   const localEndDateRaw = dateFromAPIToLocalNoon(displayEnd || end);
+  
+  console.log(0, localStartDate)
+  console.log(1, localEndDateRaw)
+  // console.log(1, localStartDate.getHours(), localStartDate.getMinutes())
 
   const isNightly = unitType === LINE_ITEM_NIGHT;
   const isDaily = unitType === LINE_ITEM_DAY;
@@ -69,12 +57,20 @@ const LineItemBookingPeriod = props => {
     />
   );
 
+  const dateFormatOptions = {
+    hour:"numeric",
+    minute:"2-digit",
+    hour12: false
+  }
+
   return (
     <div className={css.lineItem}>
       <span className={css.itemLabel}>
         <BookingPeriod isSingleDay={isSingleDay} startDate={localStartDate} endDate={endDay} />
       </span>
-      <span className={css.itemValue}>{unitCountMessage}</span>
+      <span className={css.itemValue}>
+        <FormattedDate value={localStartDate} {...dateFormatOptions} /> - <FormattedDate value={localEndDateRaw} {...dateFormatOptions} /> 
+      </span>
     </div>
   );
 };

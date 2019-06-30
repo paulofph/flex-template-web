@@ -4,6 +4,8 @@ import { FormattedMessage, intlShape } from 'react-intl';
 import { formatMoney } from '../../util/currency';
 import { types as sdkTypes } from '../../util/sdkLoader';
 import { LINE_ITEM_PROVIDER_COMMISSION, propTypes } from '../../util/types';
+import config from '../../config';
+import { marketPlaceCommission } from '../../marketplace-custom-config'
 
 import css from './BookingBreakdown.css';
 
@@ -19,9 +21,18 @@ const isValidCommission = commissionLineItem => {
   );
 };
 
+const calculateCommission = (transaction) => {
+  let amount = 0
+  transaction.attributes.lineItems.map(item => {
+    if(item.code.includes('adults') || item.code.includes('children')) {
+      amount = amount + item.lineTotal.amount;
+    }
+  })
+  return new Money(amount * marketPlaceCommission, config.currency)
+}
+
 const LineItemProviderCommissionMaybe = props => {
   const { transaction, isProvider, intl } = props;
-
   const providerCommissionLineItem = transaction.attributes.lineItems.find(
     item => item.code === LINE_ITEM_PROVIDER_COMMISSION && !item.reversal
   );
@@ -37,7 +48,7 @@ const LineItemProviderCommissionMaybe = props => {
     }
 
     const commission = providerCommissionLineItem.lineTotal;
-    const formattedCommission = commission ? formatMoney(intl, commission) : null;
+    const formattedCommission = commission ? formatMoney(intl, calculateCommission(transaction)) : null;
 
     commissionItem = (
       <div className={css.lineItem}>

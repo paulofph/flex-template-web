@@ -42,8 +42,7 @@ export const BookingBreakdownComponent = props => {
 
   return (
     <div className={classes}>
-    
-
+      <LineItemBookingPeriod transaction={transaction} booking={booking} unitType={unitType} />	
       <LineItemUnknownItemsMaybe transaction={transaction} intl={intl} />
 
       <LineItemSubTotalMaybe
@@ -78,11 +77,6 @@ export const BookingBreakdownComponent = props => {
 
       <hr className={css.totalDivider} />
       <LineItemTotalPrice transaction={transaction} isProvider={isProvider} intl={intl} />
-      {hasCommissionLineItem ? (
-        <span className={css.feeInfo}>
-          <FormattedMessage id="BookingBreakdown.commissionFeeNote" />
-        </span>
-      ) : null}
     </div>
   );
 };

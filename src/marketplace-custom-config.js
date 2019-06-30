@@ -117,3 +117,5 @@ export const priceFilterConfig = {
 export const dateRangeFilterConfig = {
   active: true,
 };
+
+export const marketPlaceCommission = 0.15;

@@ -278,8 +278,6 @@ export class CheckoutPageComponent extends Component {
     // NOTE: if unit type is line-item/units, quantity needs to be added.
     // The way to pass it to checkout page is through pageData.bookingData
 
-    console.log('speculatedTransaction.booking', speculatedTransaction, values)
-
     const requestParams = {
       listingId: this.state.pageData.listing.id,
       cardToken,
