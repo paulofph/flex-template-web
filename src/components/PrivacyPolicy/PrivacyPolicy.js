@@ -22,7 +22,7 @@ const PrivacyPolicy = props => {
 
       <h2>I. Definições </h2>
       <p>
-        - “Bpool”, “bpool company” representa um empresa, signada por WORDERFUL FORMULA - UNIPESSOAL LDA, com o número de contribuinte 515509825, com sede na Rua Casa Benzedor, 973, 2440-234 Batalha.
+        - “Bpool”, “bpool company”, "b'pool" representa um empresa, signada por WORDERFUL FORMULA - UNIPESSOAL LDA, com o número de contribuinte 515509825, com sede na Rua Casal Benzedor, 973, 2440-234 Batalha.
       </p>
       <p>
         - “Plataforma”, “Portal”  significa o marketplace acessível no endereço www.thebpool.com que constitui a plataforma que permite aos proprietários de piscinas alugar o acesso à sua piscina aos utilizadores do marketplace. A Bpool  é um serviço de ligação, oferece o serviço de reserva. Assim, aquando a existência de uma reserva, a bpool age unicamente como intermediário entre o utilizador e o anfitrião, sendo que a relação jurídica do aluguer/acesso é entre o utilizador e o anfitrião, nunca entre a bpool e o  proprietário/utilizador.
