@@ -41,14 +41,15 @@ const LineItemProviderCommissionMaybe = props => {
   let commissionItem = null;
 
   if (isProvider) {
-    if (!isValidCommission(providerCommissionLineItem)) {
-      // eslint-disable-next-line no-console
-      console.error('invalid commission line item:', providerCommissionLineItem);
-      throw new Error('Commission should be present and the value should be zero or negative');
-    }
+    // if (!isValidCommission(providerCommissionLineItem)) {
+    //   // eslint-disable-next-line no-console
+    //   console.error('invalid commission line item:', providerCommissionLineItem);
+    //   throw new Error('Commission should be present and the value should be zero or negative');
+    // }
 
-    const commission = providerCommissionLineItem.lineTotal;
-    const formattedCommission = commission ? formatMoney(intl, calculateCommission(transaction)) : null;
+    // console
+    const commission = providerCommissionLineItem ? providerCommissionLineItem.lineTotal: null;
+    const formattedCommission = formatMoney(intl, calculateCommission(transaction));
 
     commissionItem = (
       <div className={css.lineItem}>

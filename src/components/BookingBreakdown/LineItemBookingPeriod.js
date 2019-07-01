@@ -29,11 +29,12 @@ const LineItemBookingPeriod = props => {
   // where there are preparation time needed between bookings.
   // Read more: https://www.sharetribe.com/api-reference/#bookings
   const { start, end, displayStart, displayEnd } = booking.attributes;
+  
   const localStartDate = dateFromAPIToLocalNoon(displayStart || start);
   const localEndDateRaw = dateFromAPIToLocalNoon(displayEnd || end);
   
-  console.log(0, localStartDate)
-  console.log(1, localEndDateRaw)
+  console.log(0, start)
+  console.log(1, end)
   // console.log(1, localStartDate.getHours(), localStartDate.getMinutes())
 
   const isNightly = unitType === LINE_ITEM_NIGHT;
@@ -69,7 +70,7 @@ const LineItemBookingPeriod = props => {
         <BookingPeriod isSingleDay={isSingleDay} startDate={localStartDate} endDate={endDay} />
       </span>
       <span className={css.itemValue}>
-        <FormattedDate value={localStartDate} {...dateFormatOptions} /> - <FormattedDate value={localEndDateRaw} {...dateFormatOptions} /> 
+        <FormattedDate value={start} {...dateFormatOptions} /> - <FormattedDate value={end} {...dateFormatOptions} /> 
       </span>
     </div>
   );

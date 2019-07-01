@@ -53,6 +53,14 @@ const formatDate = (intl, date) => {
   };
 };
 
+const formatHour = (intl, date) => {
+  return intl.formatDate(date, {
+      hour:"numeric",
+      minute:"2-digit",
+      hour12: false
+    })
+};
+
 // Translated name of the state of the given transaction
 export const txState = (intl, tx, type) => {
   const isOrder = type === 'order';
@@ -147,6 +155,7 @@ const bookingData = (unitType, tx, isOrder, intl) => {
   const isUnits = unitType === LINE_ITEM_UNITS;
   const isSingleDay = isDaily && daysBetween(startDate, endDateRaw) === 1;
   const bookingStart = formatDate(intl, startDate);
+  const bookingStartHour = formatHour(intl, displayStart);
 
   // Shift the exclusive API end date with daily bookings
   const endDate =
@@ -155,10 +164,11 @@ const bookingData = (unitType, tx, isOrder, intl) => {
           .subtract(1, 'days')
           .toDate()
       : endDateRaw;
-  const bookingEnd = formatDate(intl, endDate);
+  const bookingEnd = formatDate(intl, endDateRaw);
   const bookingPrice = isOrder ? tx.attributes.payinTotal : tx.attributes.payoutTotal;
+  const bookingEndHour = formatHour(intl, displayEnd);
   const price = formatMoney(intl, bookingPrice);
-  return { bookingStart, bookingEnd, price, isSingleDay };
+  return { bookingStart, bookingEnd, price, isSingleDay, bookingStartHour, bookingEndHour };
 };
 
 // Functional component as internal helper to print BookingInfo if that is needed
@@ -170,8 +180,11 @@ const BookingInfoMaybe = props => {
     return null;
   }
 
-  const { bookingStart, bookingEnd, price, isSingleDay } = bookingData(unitType, tx, isOrder, intl);
-  const dateInfo = isSingleDay ? bookingStart.short : `${bookingStart.short} - ${bookingEnd.short}`;
+  const { bookingStart, bookingEnd, price, bookingStartHour, bookingEndHour } = bookingData(unitType, tx, isOrder, intl);
+  const isSingleDay = true
+  const dateInfo = isSingleDay ? 
+    `${bookingStart.short} - ${bookingStartHour} - ${bookingEndHour}`  : 
+    `${bookingStart.short} - ${bookingEnd.short}`;
 
   return (
     <div className={classNames(css.bookingInfo, bookingClassName)}>
