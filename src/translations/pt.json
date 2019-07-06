@@ -33,7 +33,7 @@
   "AuthenticationPage.signupLinkText": "Registar",
   "AuthenticationPage.termsHeading": "Termos de Serviço",
   "AuthenticationPage.verifyEmailClose": "Mais Tarde",
-  "AuthenticationPage.verifyEmailText": "Obrigado por se registar! Ainda falta um passo, precisamos que verifique o seu endereço de email. Utilize o link que enviámos para {email}.",
+  "AuthenticationPage.verifyEmailText": "Obrigado por se registar! Ainda falta um passo, precisamos que verifique o seu endereço de email. Utilize o link que enviámos para {email}. Verifique na pasta SPAM se necessário.",
   "AuthenticationPage.verifyEmailTitle": "{name}, verifique a sua caixa de entrade e verifique o seu email.",
   "Avatar.bannedUserDisplayName": "Banned user",
   "Avatar.deletedUserDisplayName": "Deleted user",
